@@ -1,0 +1,47 @@
+<section class="vh-100" style="background-color: #212121;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4">
+              <div class="mb-4">
+                <img src="assets/images/cofound-ai-logo.png" alt="CoFound AI" style="max-height: 60px; height: auto; width: auto" />
+              </div>
+              <h2 class="fw-bold mb-4 text-uppercase">Login</h2>
+
+              <div class="form-outline form-white mb-4">
+                <input type="email" class="form-control form-control-lg"
+                       [(ngModel)]="email" placeholder="Email"
+                       style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;" />
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="password" class="form-control form-control-lg"
+                       [(ngModel)]="password" placeholder="Password"
+                       style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;" />
+              </div>
+
+              <button class="btn btn-lg px-5 w-100 mb-3"
+                      (click)="login()"
+                      [disabled]="loading"
+                      style="background-color: #ff5252; color: #fff; border: none;">
+                {{ loading ? 'Loading...' : 'Sign in' }}
+              </button>
+
+              <div *ngIf="error" class="alert alert-danger mt-3">
+                {{ error }}
+              </div>
+            </div>
+
+            <div>
+              <p class="mb-0" style="color: #e5e6e9;">Don't have an account?
+                <a (click)="goToRegister()" style="color: #ff5252; cursor: pointer; text-decoration: none;">Sign Up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

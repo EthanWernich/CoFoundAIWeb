@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../src/styles/scss/variable";
+ @import "../src/styles/scss/bootstrap/bootstrap.scss";
+@import "../src/styles/scss/header";
+@import "../src/styles/scss/hero-banner";
+@import "../src/styles/scss/service";
+@import "../src/styles/scss/our-services";
+@import "../src/styles/scss/portfolio";
+@import "../src/styles/scss/pricing";
+@import "../src/styles/scss/faq";
+@import "../src/styles/scss/contact";
+@import "../src/styles/scss/footer";
+@import "../src/styles/scss/global";
+@import "../src/styles/scss/responsive";

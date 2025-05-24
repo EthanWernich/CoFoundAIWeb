@@ -1,0 +1,766 @@
+<!------------------------------>
+<!-- Header Start -->
+<!------------------------------>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<!-- <header class="main-header position-fixed w-100"> -->
+<header class="main-header w-100">
+  <div class="container">
+    <nav class="navbar navbar-expand-xl py-0">
+      <div class="logo">
+        <div class="navbar-brand py-0 me-0" href="#">
+          <img
+            src="assets/images/cofound-ai-logo.png"
+            alt=""
+            style="max-height: 60px; height: auto; width: auto"
+          />
+        </div>
+      </div>
+
+      <a
+        class="d-inline-block d-lg-block d-xl-none d-xxl-none nav-toggler text-decoration-none"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        aria-controls="offcanvasExample"
+      >
+        <i class="ti ti-menu-2 text-warning"></i>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link text-capitalize"
+              aria-current="page"
+              href="#features"
+              >Services</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-capitalize" href="#pricing">Pricing</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link text-capitalize" href="#">Elements </a>
+          </li> -->
+
+          <li class="nav-item">
+            <a [routerLink]="'/validate-idea'" class="nav-link"
+              >Validate My Idea</a
+            >
+          </li>
+          <ng-container *ngIf="auth.getCurrentUser() | async">
+            <li class="nav-item">
+              <a [routerLink]="'/my-ideas'" class="nav-link">My Ideas</a>
+            </li>
+          </ng-container>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <ng-container *ngIf="!(auth.getCurrentUser() | async); else loggedIn">
+            <a [routerLink]="'/login'" class="btn btn-outline-light">Login</a>
+            <a [routerLink]="'/register'" class="btn btn-warning">Register</a>
+          </ng-container>
+          <ng-template #loggedIn>
+            <button (click)="logout()" class="btn btn-outline-light">
+              Logout
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div class="offcanvas-header">
+      <div class="logo">
+        <a class="navbar-brand py-0 me-0" href="#"
+          ><img src="../assets/images/Creato-logo.svg" alt=""
+        /></a>
+      </div>
+      <button
+        type="button"
+        class="btn-close text-reset ms-auto"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="ti ti-x text-warning"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body pt-0">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" aria-current="page" href="#"
+            >Services</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="'/validate-idea'" class="nav-link text-capitalize"
+            >Validate My Idea</a
+          >
+        </li>
+        <ng-container *ngIf="auth.getCurrentUser() | async">
+          <li class="nav-item">
+            <a [routerLink]="'/my-ideas'" class="nav-link text-capitalize"
+              >My Ideas</a
+            >
+          </li>
+        </ng-container>
+      </ul>
+      <div class="login d-block align-items-center mt-3">
+        <a class="btn btn-warning text-capitalize w-100" href="#">contact us</a>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header End  -->
+<main>
+  <!--- Hero Banner Start--------->
+  <section class="hero-banner position-relative overflow-hidden">
+    <div class="container">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="position-relative left-hero-color">
+            <h1 class="mb-0 fw-bold">
+              AI your smartest
+              <span class="highlight-box"
+                ><span class="highlight-box-content">co-founder</span></span
+              >
+            </h1>
+            <p>No more guessing. Just describe your idea.</p>
+            <a
+              [routerLink]="'/validate-idea'"
+              class="btn btn-warning btn-hover-secondery"
+              ><span class="d-inline-block me-2"></span>Validate Your Idea</a
+            >
+          </div>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="position-relative right-hero-color">
+            <img
+              src="../assets/images/hero/ai-co-founder-header.png"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- Hero Banner End--------->
+
+  <!-- Portfolio section Start---->
+  <!-- <section class="portfolio position-relative bg-primary">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-12"><small style="color: #ff5252;" class="fs-7 d-block ">Product Docs</small></div>
+                <div class="col-12 d-xxl-flex d-xl-flex d-lg-flex d-md-flex d-sm-block d-block align-items-center justify-content-xxl-between justify-content-xl-between justify-content-lg-between justify-content-md-between justify-content-sm-between justify-content-sm-center ">
+                    <h2 class="fs-3 text-white mb-0">Beautiful Docs<br> for your APIs.</h2>
+                </div>
+            </div>
+            <div class="row d-flex flex-wrap justify-content-center step-row">
+            </div>
+        </div>
+        <div class="container position-relative" >
+            <div class="portfolio-wrap">
+                <div class="owl-carousel owl-theme portfolio-slider">
+                        <div class="item"><a href="#"><img src="../assets/images/portfolio/Portfolio.jpg" class="w-100"></a></div>
+                        <div class="item"><a href="#"><img src="../assets/images/portfolio/Portfolio.jpg" class="w-100"></a></div>
+                        <div class="item"><a href="#"><img src="../assets/images/portfolio/Portfolio.jpg" class="w-100"></a></div>
+                        <div class="item"><a href="#"><img src="../assets/images/portfolio/Portfolio.jpg" class="w-100"></a></div>
+                        <div class="item"><a href="#"><img src="../assets/images/portfolio/Portfolio.jpg" class="w-100"></a></div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+  <!-- Portfolio section End ----->
+
+  <!--- Service sectin Start------>
+  <section class="service position-relative overflow-hidden">
+    <div class="container position-relative">
+      <!-- <img src="../assets/images/service/dot-shape.png" class="shape position-absolute"> -->
+      <div class="row">
+        <div class="col-12">
+          <small style="color: #ff5252" class="fs-7 d-block"
+            >From Idea to Action – Fast</small
+          >
+        </div>
+        <div
+          class="col-12 d-xxl-flex d-xl-flex d-lg-flex d-md-flex d-sm-block d-block align-items-center justify-content-xxl-between justify-content-xl-between justify-content-lg-between justify-content-md-between justify-content-sm-between justify-content-sm-center"
+        >
+          <h2 class="fs-2 mb-0 main-text-color">
+            Your AI-Powered <br />Startup Toolkit
+          </h2>
+          <!-- <a href="#" class="btn btn-warning btn-hover-secondery section-btn">All Services</a> -->
+        </div>
+      </div>
+      <div class="row d-flex flex-wrap justify-content-center step-row">
+        <div
+          class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center"
+        >
+          <div class="card border-0 service-card">
+            <div class="card-body">
+              <div
+                style="background-color: #0f0f0f"
+                class="icon-round overflow-hidden rounded-circle position-relative d-flex align-items-center justify-content-center mx-auto text-center"
+              >
+                <span class="material-icons" style="color: #ff5252"
+                  >lightbulb</span
+                >
+              </div>
+              <h3 class="fs-4 main-text-color">Describe Your Idea</h3>
+              <p class="fs-7 mb-0 fw-500 main-text-color">
+                Tell us your startup idea in plain language — no tech jargon
+                needed.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center"
+        >
+          <div class="card border-0 service-card">
+            <div class="card-body">
+              <div
+                style="background-color: #0f0f0f"
+                class="icon-round overflow-hidden rounded-circle position-relative d-flex align-items-center justify-content-center mx-auto text-center"
+              >
+                <span class="material-icons" style="color: #ff5252"
+                  >psychology</span
+                >
+              </div>
+              <h3 class="fs-4 main-text-color">Let the AI Analyze</h3>
+              <p class="fs-7 mb-0 fw-500 main-text-color">
+                CoFound AI breaks it down: personas, market demand, MVP, and
+                monetization.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 text-center"
+        >
+          <div class="card border-0 service-card">
+            <div class="card-body">
+              <div
+                style="background-color: #0f0f0f"
+                class="icon-round overflow-hidden rounded-circle position-relative d-flex align-items-center justify-content-center mx-auto text-center"
+              >
+                <span class="material-icons" style="color: #ff5252"
+                  >analytics</span
+                >
+              </div>
+              <h3 class="fs-4 main-text-color">Get Your Validation Report</h3>
+              <p class="fs-7 mb-0 fw-500 main-text-color">
+                Instantly receive a structured report and action plan to move
+                forward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- Service sectin End------>
+
+  <!--- Our Service sectin Start------>
+  <section id="features" class="our-service position-relative overflow-hidden">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-8 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+          <img
+            src="../assets/images/our-service/ai-co-founder-extra-features.png"
+            style="max-width: 500; max-height: 500px"
+            class="img-fluid"
+          />
+        </div>
+        <div
+          class="col-xxl-4 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ps-xxl-0 ps-xl-0 ps-lg-3 ps-md-3 ps-sm-3 ps-3"
+        >
+          <small style="color: #ff5252" class="fs-7 d-block">Our Service</small>
+          <h2 class="fs-2 mb-0 main-text-color">
+            Think It. Validate It. Build It.
+          </h2>
+          <p class="mb-0 fw-500 fs-7">
+            Upload your idea once, and let CoFound AI handle the heavy lifting.
+            You'll get:
+          </p>
+          <ul class="list-unstyled mb-0 pl-0">
+            <li class="d-flex flex-wrap align-items-start">
+              <i class="ti ti-circle-check fs-4 pe-2"></i>
+              <span class="fs-7 main-text-color">
+                - Target Personas — who you're building for</span
+              >
+            </li>
+            <li class="d-flex flex-wrap align-items-start">
+              <i class="ti ti-circle-check fs-4 pe-2"></i>
+              <span class="fs-7 main-text-color"
+                >- Monetization Strategies
+              </span>
+            </li>
+            <li class="d-flex flex-wrap align-items-start">
+              <i class="ti ti-circle-check fs-4 pe-2"></i>
+              <span class="fs-7 main-text-color">
+                - Market Signals — is there demand?</span
+              >
+            </li>
+
+            <li class="d-flex flex-wrap align-items-start">
+              <i class="ti ti-circle-check fs-4 pe-2"></i>
+              <span class="fs-7 main-text-color">
+                - Launch Plan — where to find your first users</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- Our Service sectin End---->
+
+  <!--- Demo video section Start---->
+  <section id="demo-video" class="video-section py-5 bg-dark text-center">
+    <div class="container">
+      <!-- <small style="color: #ff5252" class="fs-7 d-block"
+              >How It works</small
+            >
+        <h2 class="text-white mb-4">See CoFound AI in Action</h2> -->
+      <div class="row justify-content-center">
+        <div
+          class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 text-center"
+        >
+          <small style="color: #ff5252" class="fs-7 d-block"
+            >How It works</small
+          >
+          <h2 class="fs-3 pricing-head mb-4 position-relative main-text-color">
+            See CoFound AI in Action
+          </h2>
+        </div>
+      </div>
+      <div class="video-wrapper mx-auto rounded-4 overflow-hidden">
+
+        <iframe
+        width="100%"
+        height="480"
+          src="https://www.youtube.com/embed/K6ET0xdTEGY?si=Jue3ezc7IOMPj8wf"
+          title="CoFound AI Demo Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+  <!--- Demo video section End---->
+
+  <!-- Supercharge section Start -->
+  <section
+    class="supercharge position-relative overflow-hidden"
+    style="background-color: #212121; padding: 80px 0"
+  >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="text-center">
+            <!-- <small style="color: #ff5252; font-family: monospace;" class="fs-7 d-block">const launch_time = "now";</small> -->
+            <h2
+              class="display-4 fw-bold text-white mb-4"
+              style="font-size: 3.5rem; line-height: 1.2"
+            >
+              Supercharge your startup instantly,<br />
+              launch faster, make $
+            </h2>
+            <p class="fs-5 text-light mb-4 mx-auto" style="max-width: 800px">
+              Validate users, test market demand, and plan your launch at
+              lightspeed. Spend your time building your startup, not
+              second-guessing. CoFound AI provides you with the validation and
+              insights you need to launch, FAST.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Supercharge section End -->
+
+  <!-- Pricing section Start------>
+  <section id="pricing" class="pricing position-relative overflow-hidden">
+    <div class="container position-relative">
+      <div class="row justify-content-center">
+        <div
+          class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 text-center"
+        >
+          <small style="color: #ff5252" class="fs-7 d-block"
+            >Pricing Plan</small
+          >
+          <h2 class="fs-3 pricing-head mb-0 position-relative main-text-color">
+            Get More Tokens
+          </h2>
+        </div>
+      </div>
+      <div class="row justify-content-center price-plan mt-4">
+        <div class="col-md-4 mb-4">
+          <div
+            class="card h-100 text-center"
+            style="
+              background: #212121;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              color: #e5e6e9;
+            "
+          >
+            <div class="card-body py-5">
+              <div class="mb-3">
+                <span
+                  class="badge rounded-pill"
+                  style="
+                    background: #ff5252;
+                    color: #fff;
+                    font-size: 1rem;
+                    padding: 0.5rem 1.5rem;
+                  "
+                  >2 Tokens</span
+                >
+              </div>
+              <h2 class="mb-3" style="color: #ff5252">$5</h2>
+              <ul class="list-unstyled mb-4">
+                <li>Validate 2 ideas</li>
+                <li>Instant access</li>
+              </ul>
+              <a
+                href="#"
+                class="btn btn-danger w-100"
+                style="background: #ff5252; border: none"
+                >Buy Now
+                <span style="font-size: 0.9rem">(TODO: Paystack link)</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div
+            class="card h-100 text-center"
+            style="
+              background: #212121;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              color: #e5e6e9;
+            "
+          >
+            <div class="card-body py-5">
+              <div class="mb-3">
+                <span
+                  class="badge rounded-pill"
+                  style="
+                    background: #ff5252;
+                    color: #fff;
+                    font-size: 1rem;
+                    padding: 0.5rem 1.5rem;
+                  "
+                  >5 Tokens</span
+                >
+              </div>
+              <h2 class="mb-3" style="color: #ff5252">$10</h2>
+              <ul class="list-unstyled mb-4">
+                <li>Validate 5 ideas</li>
+                <li>Instant access</li>
+              </ul>
+              <a
+                href="#"
+                class="btn btn-danger w-100"
+                style="background: #ff5252; border: none"
+                >Buy Now
+                <span style="font-size: 0.9rem">(TODO: Paystack link)</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div
+            class="card h-100 text-center"
+            style="
+              background: #212121;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              color: #e5e6e9;
+            "
+          >
+            <div class="card-body py-5">
+              <div class="mb-3">
+                <span
+                  class="badge rounded-pill"
+                  style="
+                    background: #ff5252;
+                    color: #fff;
+                    font-size: 1rem;
+                    padding: 0.5rem 1.5rem;
+                  "
+                  >20 Tokens</span
+                >
+              </div>
+              <h2 class="mb-3" style="color: #ff5252">$30</h2>
+              <ul class="list-unstyled mb-4">
+                <li>Validate 20 ideas</li>
+                <li>Instant access</li>
+              </ul>
+              <a
+                href="#"
+                class="btn btn-danger w-100"
+                style="background: #ff5252; border: none"
+                >Buy Now
+                <span style="font-size: 0.9rem">(TODO: Paystack link)</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Pricing section End-------->
+
+  <!------ FAQ section Start------>
+  <section class="faq position-relative overflow-hidden">
+    <div class="container position-relative">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center">
+          <small style="color: #ff5252" class="fs-7 d-block"
+            >Frequently Asked Questions</small
+          >
+          <h2 class="fs-3 mb-0 main-text-color">
+            Want to ask something from us?
+          </h2>
+        </div>
+      </div>
+      <div class="accordion-block">
+        <div class="accordion row" id="accordionPanelsStayOpenExample">
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="accordion-item mb-3">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button
+                  class="accordion-button main-text-color fs-7"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne"
+                >
+                  What is CoFound AI and how does it work?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne"
+              >
+                <div class="accordion-body fs-7 fw-500 pt-0">
+                  CoFound AI is your virtual co-founder — it helps you plan,
+                  validate, and build your startup using AI-powered tools.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item mb-3">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button
+                  class="accordion-button collapsed main-text-color fs-7"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo"
+                >
+                  Do I need a detailed business plan to get started?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo"
+              >
+                <div class="accordion-body fs-7 fw-500 pt-0">
+                  Nope. Just bring your idea — CoFound AI will help shape it
+                  into a plan and MVP.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item mb-3">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  class="accordion-button collapsed main-text-color fs-7"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  Do I need to know how to code to use CoFound AI?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree"
+              >
+                <div class="accordion-body fs-7 fw-500 pt-0">
+                  Nope! CoFound AI is designed for both technical and
+                  non-technical founders. It guides you through building your
+                  SaaS without writing a single line of code.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="accordion-item mb-3">
+              <h2 class="accordion-header" id="panelsStayOpen-headingfour">
+                <button
+                  class="accordion-button collapsed main-text-color fs-7"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapsefour"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapsefour"
+                >
+                  Can it really help me launch a product?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapsefour"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingfour"
+              >
+                <div class="accordion-body fs-7 fw-500 pt-0">
+                  Absolutely. CoFound AI gives you strategic guidance,
+                  actionable steps to turn your idea into a
+                  real, launch-ready SaaS.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item mb-3">
+              <h2 class="accordion-header" id="panelsStayOpen-headingfive">
+                <button
+                  class="accordion-button collapsed main-text-color fs-7"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapsefive"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapsefive"
+                >
+                  What exactly can CoFound AI do for me?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapsefive"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingfour"
+              >
+                <div class="accordion-body fs-7 fw-500 pt-0">
+                  From brainstorming features and validating ideas – CoFound AI acts like a digital
+                  product partner.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item mb-3">
+              <h2 class="accordion-header" id="panelsStayOpen-headingsix">
+                <button
+                  class="accordion-button collapsed main-text-color fs-7"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapsesix"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapsesix"
+                >
+                  Is this like ChatGPT?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapsesix"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingsix"
+              >
+                <div class="accordion-body fs-7 fw-500 pt-0">
+                  Not quite. While it uses similar AI technology, CoFound AI is
+                  built specifically for startup building, with tools, prompts,
+                  and workflows tailored to SaaS creation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!------ FAQ section End------>
+
+  <!-----Footer Start------------->
+  <footer class="footer">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-6 col-sm-12 mb-4 mb-md-0">
+          <div class="footer-logo-col">
+            <a href="#">
+              <img
+                src="assets/images/cofound-ai-logo.png"
+                style="max-height: 60px; height: auto; width: auto"
+                alt="CoFound AI"
+              />
+            </a>
+            <p class="mb-0 fs-7 fw-500 mt-3">
+              Let AI be your smartest co-founder. Validate your startup idea and
+              launch faster with CoFound AI.
+            </p>
+          </div>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+          <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+              <h5 style="color: #ff5252" class="mb-3">Quick Links</h5>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-3"><a href="#features" class="text-decoration-none text-light hover-warning">Services</a></li>
+                <li class="mb-3"><a href="#pricing" class="text-decoration-none text-light hover-warning">Pricing</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h5 style="color: #ff5252" class=" mb-3">Account</h5>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-3"><a [routerLink]="'/validate-idea'" class="text-decoration-none text-light hover-warning">Validate My Idea</a></li>
+                <ng-container *ngIf="!(auth.getCurrentUser() | async); else loggedInFooter">
+                  <li class="mb-3"><a [routerLink]="'/login'" class="text-decoration-none text-light hover-warning">Login</a></li>
+                </ng-container>
+                <ng-template #loggedInFooter>
+                  <li class="mb-3"><button (click)="logout()" class="btn btn-link text-decoration-none text-light hover-warning p-0">Logout</button></li>
+                </ng-template>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <p class="blue-light mb-0 fs-7">
+          © 2025 CoFound AI. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-------Footer End------------->
+  <div
+    *ngIf="showNotification"
+    id="idea-notification"
+    class="idea-notification"
+  >
+    <h3 class="title">👋 Start validating your idea</h3>
+    <p class="description">
+      Describe your idea in detail and our AI co-founder will help you validate
+      it, identify target users, and create a launch plan.
+    </p>
+    <button
+      class="btn btn-warning btn-hover-secondery w-100"
+      [routerLink]="'/validate-idea'"
+    >
+      Get Started
+    </button>
+  </div>
+</main>

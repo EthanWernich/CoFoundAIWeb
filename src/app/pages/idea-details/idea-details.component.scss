@@ -1,0 +1,360 @@
+// Theme colors
+$primary-color: #ff5252;
+$background-dark: #212121;
+$text-light: #e5e6e9;
+$card-border: rgba(255, 255, 255, 0.1);
+
+// Back button
+.btn-outline-light {
+  border-color: $text-light;
+  color: $text-light;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $text-light;
+    color: $background-dark;
+  }
+}
+
+// Idea details card
+.idea-details-card {
+  background-color: $background-dark;
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 2rem;
+  color: $text-light;
+}
+
+// Header
+.idea-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $card-border;
+
+  .idea-title {
+    color: $primary-color;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .idea-meta {
+    color: $text-light;
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+}
+
+// Sections
+.idea-section {
+  margin-bottom: 3rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    color: $primary-color;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $card-border;
+  }
+
+  .section-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+}
+
+// Market Analysis Grid
+.market-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.analysis-card {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 1.5rem;
+
+  .card-title {
+    color: $primary-color;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-content {
+    color: $text-light;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .score-container {
+    margin: 1rem 0;
+
+    .score-bar {
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+
+      .score-fill {
+        height: 100%;
+        background-color: $primary-color;
+        border-radius: 4px;
+        transition: width 0.3s ease-in-out;
+      }
+    }
+
+    .score-value {
+      text-align: right;
+      font-size: 0.9rem;
+      color: $text-light;
+    }
+  }
+
+  .trend {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $text-light;
+    font-size: 0.9rem;
+  }
+
+  .risk-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid $card-border;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// Personas Grid
+.personas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.persona-card {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 1.5rem;
+
+  .persona-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .persona-icon {
+      font-size: 2rem;
+    }
+
+    .persona-name {
+      color: $primary-color;
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .persona-role {
+      color: $text-light;
+      opacity: 0.7;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  .persona-content {
+    .persona-section {
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      h4 {
+        color: $text-light;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 0.5rem 0;
+          border-bottom: 1px solid $card-border;
+          color: $text-light;
+          opacity: 0.9;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+
+      p {
+        color: $text-light;
+        opacity: 0.9;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Features Grid
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 1.5rem;
+
+  .card-title {
+    color: $primary-color;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid $card-border;
+      color: $text-light;
+      opacity: 0.9;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .tech-section {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      color: $text-light;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid $card-border;
+        color: $text-light;
+        opacity: 0.9;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+// Launch Plan Grid
+.launch-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.launch-card {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 1.5rem;
+
+  .card-title {
+    color: $primary-color;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .strategy-section,
+  .monetization-section,
+  .timeline-section {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      color: $text-light;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: $text-light;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid $card-border;
+        color: $text-light;
+        opacity: 0.9;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+// Alert styles
+.alert-danger {
+  background-color: rgba($primary-color, 0.1);
+  border-color: $primary-color;
+  color: $primary-color;
+}
+
+// Spinner styles
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

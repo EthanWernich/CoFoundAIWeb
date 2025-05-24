@@ -1,0 +1,105 @@
+// Theme colors
+$primary-color: #ff5252;
+$background-dark: #212121;
+$text-light: #e5e6e9;
+$card-border: rgba(255, 255, 255, 0.1);
+
+// Empty state styles
+.empty-state-card {
+  background-color: $background-dark;
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: $text-light;
+
+  .empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .empty-state-title {
+    color: $primary-color;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .empty-state-text {
+    color: $text-light;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+}
+
+// Idea card styles
+.idea-card {
+  background-color: $background-dark;
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  height: 100%;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .idea-card-body {
+    padding: 1.5rem;
+  }
+
+  .idea-card-title {
+    color: $primary-color;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .idea-card-text {
+    color: $text-light;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .idea-card-date {
+    color: $text-light;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  .idea-card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid $card-border;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    .btn-danger {
+      width: 100%;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+// Alert styles
+.alert-danger {
+  background-color: rgba($primary-color, 0.1);
+  border-color: $primary-color;
+  color: $primary-color;
+}
+
+// Spinner styles
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

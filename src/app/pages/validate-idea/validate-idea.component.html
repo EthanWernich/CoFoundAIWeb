@@ -1,0 +1,666 @@
+<!------------------------------>
+<!-- Header Start -->
+<!------------------------------>
+<style>
+  .nav-link:hover {
+    color: #ff5252 !important;
+  }
+</style>
+<!-- <header class="main-header position-fixed w-100"> -->
+<header class="main-header w-100">
+  <div class="container">
+    <nav class="navbar navbar-expand-xl py-0">
+      <div class="logo">
+        <div class="navbar-brand py-0 me-0" href="#">
+          <img
+            src="assets/images/cofound-ai-logo.png"
+            alt=""
+            style="max-height: 60px; height: auto; width: auto"
+          />
+        </div>
+      </div>
+
+      <a
+        class="d-inline-block d-lg-block d-xl-none d-xxl-none nav-toggler text-decoration-none"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        aria-controls="offcanvasExample"
+      >
+        <i class="ti ti-menu-2 text-warning"></i>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link text-capitalize" (click)="navigateToHomePage()" style="cursor: pointer; color: #e5e6e9; transition: color 0.3s ease;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link text-capitalize"
+              aria-current="page"
+              href="#features"
+              style="color: #e5e6e9; transition: color 0.3s ease;"
+              >Services</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-capitalize" href="#pricing" style="color: #e5e6e9; transition: color 0.3s ease;">Pricing</a>
+          </li>
+          <ng-container *ngIf="auth.getCurrentUser() | async">
+            <li class="nav-item">
+              <a [routerLink]="'/my-ideas'" class="nav-link" style="color: #e5e6e9; transition: color 0.3s ease;">My Ideas</a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- <div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div class="offcanvas-header">
+      <div class="logo">
+        <a class="navbar-brand py-0 me-0" href="#"
+          ><img src="../assets/images/Creato-logo.svg" alt=""
+        /></a>
+      </div>
+      <button
+        type="button"
+        class="btn-close text-reset ms-auto"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="ti ti-x text-warning"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body pt-0">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" aria-current="page" href="#"
+            >Services</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" href="#">Pricing </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" href="#">Elements </a>
+        </li>
+      </ul>
+      <div class="login d-block align-items-center mt-3">
+        <a class="btn btn-warning text-capitalize w-100" href="#">contact us</a>
+      </div>
+    </div>
+  </div> -->
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="py-5" style="background-color: #212121">
+    <div class="container text-white text-center">
+      <!-- Replacing static heading with rotating text -->
+      <div class="rotating-text-container hero-rotating-text">
+        <p class="rotating-text-wrapper">
+          <span class="rotating-text-prefix">Validate Your</span>
+          <span class="rotating-text-content">
+            <span class="rotating-word"
+                  [class.active]="currentWordIndex === i"
+                  *ngFor="let word of rotatingWords; let i = index">
+              {{word}}
+            </span>
+          </span>
+        </p>
+      </div>
+      <p class="lead mb-4 mx-auto" style="max-width: 700px">
+        Describe your idea, and our AI co-founder will analyze market demand,
+        identify target audiences, recommend MVP features, suggest monetization
+        strategies, and create a launch plan.
+      </p>
+      <div
+        class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3 mb-4"
+      >
+        <div class="d-flex align-items-center gap-2 text-light">
+          <div
+            class="rounded-circle bg-danger text-white d-flex justify-content-center align-items-center"
+            style="width: 2.5rem; height: 2.5rem"
+          >
+            1
+          </div>
+          <span>Describe your idea</span>
+        </div>
+        <div class="d-none d-sm-block text-white">→</div>
+        <div class="d-flex align-items-center gap-2 text-light">
+          <div
+            class="rounded-circle bg-danger text-white d-flex justify-content-center align-items-center"
+            style="width: 2.5rem; height: 2.5rem"
+          >
+            2
+          </div>
+          <span>Get market analysis</span>
+        </div>
+        <div class="d-none d-sm-block text-white">→</div>
+        <div class="d-flex align-items-center gap-2 text-light">
+          <div
+            class="rounded-circle bg-danger text-white d-flex justify-content-center align-items-center"
+            style="width: 2.5rem; height: 2.5rem"
+          >
+            3
+          </div>
+          <span>Launch with confidence</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rotating Text Section -->
+<!--<div class="rotating-text-container">
+  <p class="rotating-text-wrapper">
+    <span class="rotating-text-prefix">CoFound AI will</span>
+    <span class="rotating-text-content">
+      <span class="rotating-word"
+            [class.active]="currentWordIndex === i"
+            *ngFor="let word of rotatingWords; let i = index">
+        {{word}}
+      </span>
+    </span>
+  </p>
+</div>-->
+
+  <!-- Idea Wizard Section -->
+  <section class="idea-wizard py-5" style="background-color: #212121">
+    <div class="container text-white">
+      <!-- Tab Headers -->
+      <ul class="nav nav-tabs" id="ideaWizardTabs" role="tablist">
+        <li
+          class="nav-item"
+          role="presentation"
+          *ngFor="let tab of tabs; let i = index"
+        >
+          <button
+            class="nav-link"
+            [ngClass]="{ active: currentTab === i }"
+            [disabled]="!isTabEnabled(i)"
+            (click)="selectTab(i)"
+            type="button"
+          >
+            {{ tab }}
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="position-relative">
+        <div
+          class="tab-content p-4 border border-top-0 rounded-bottom"
+          id="ideaWizardTabsContent"
+          [class.blur-content]="loading"
+        >
+          <!-- Tab 1: Idea Basics -->
+          <div
+            class="tab-pane fade show"
+            [ngClass]="{ active: currentTab === 0 }"
+          >
+            <h5 class="fs-3 mb-4 text-center main-text-color">Idea Basics</h5>
+            <div class="mb-3">
+              <label class="form-label">Idea Title</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="form.ideaTitle"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea
+                class="form-control"
+                rows="3"
+                [(ngModel)]="form.description"
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Why this idea?</label>
+              <textarea
+                class="form-control"
+                rows="2"
+                [(ngModel)]="form.why"
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Target Audience</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="form.targetAudience"
+              />
+            </div>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-danger btn-hover-secondary" (click)="next()" [disabled]="tokens === 0">
+                {{ loading ? 'Analyzing...' : 'Analyze My Idea' }}
+                <span class="token-icon" style="vertical-align: middle; margin-left: 0.5rem; position: relative; top: -2px;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L15 8H9L12 2ZM12 22L9 16H15L12 22ZM2 12L8 15V9L2 12ZM22 12L16 9V15L22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span style="margin-left: 0.2rem;">1</span>
+                </span>
+              </button>
+            </div>
+            <div *ngIf="tokens === 0" class="text-danger mt-2">You need tokens to validate an idea.</div>
+          </div>
+
+          <!-- Tab 2: Market Analysis -->
+          <div
+            class="tab-pane fade show"
+            [ngClass]="{ active: currentTab === 1 }"
+          >
+            <div class="market-analysis-container">
+              <h2 class="section-heading">Market Interest Analysis</h2>
+
+              <div class="card-grid">
+                <!-- Interest Score Card -->
+                <div class="card card-highlight">
+                  <div class="card-header">
+                    <h3 class="card-title">Interest Score</h3>
+                    <div class="trend">
+                      <span>{{ marketAnalysis.trend === 'growing' ? '🔼' : '🔽' }}</span>
+                      <span class="trend-label">{{ marketAnalysis.trend }}</span>
+                    </div>
+                  </div>
+                  <div class="score-bar">
+                    <div class="score-fill" [style.width.%]="marketAnalysis.interestScore"></div>
+                  </div>
+                  <div class="score-range">
+                    <span>Low Interest</span>
+                    <span class="score-value">{{ marketAnalysis.interestScore }}/100</span>
+                    <span>High Interest</span>
+                  </div>
+                </div>
+
+                <!-- Market Size & Competition -->
+                <div class="card">
+                  <h3 class="card-title">Market Overview</h3>
+                  <div class="market-section">
+                    <h4>Market Size</h4>
+                    <p class="market-text">{{ marketAnalysis.marketSize }}</p>
+                  </div>
+                  <div class="market-section">
+                    <h4>Competitive Landscape</h4>
+                    <p class="market-text">{{ marketAnalysis.competitiveLandscape }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Market Opportunities -->
+              <div class="card card-subsection mb-4">
+                <h3 class="card-title">Market Opportunities</h3>
+                <div class="opportunities-section">
+                  <h4>Market Gaps</h4>
+                  <p class="opportunity-text">{{ marketAnalysis.marketGaps }}</p>
+                </div>
+                <div class="opportunities-section">
+                  <h4>Growth Potential</h4>
+                  <p class="opportunity-text">{{ marketAnalysis.growthPotential }}</p>
+                </div>
+              </div>
+
+              <!-- Key Risks -->
+              <div class="card card-subsection mb-4">
+                <h3 class="card-title">Key Risks</h3>
+                <ul class="risks-list">
+                  <li *ngFor="let risk of marketAnalysis.keyRisks">
+                    {{ risk }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Summary -->
+              <div class="card card-summary">
+                <h3 class="card-title">Analysis Summary</h3>
+                <p class="summary-text">{{ marketAnalysis.summary }}</p>
+              </div>
+
+              <!-- Market Analysis Navigation -->
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-secondary" (click)="prev()">
+                  Back to Idea Basics
+                </button>
+                <button class="btn btn-danger" (click)="next()">
+                  Continue to Target Personas
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Target Personas -->
+          <div
+            class="tab-pane fade show"
+            [ngClass]="{ active: currentTab === 2 }"
+          >
+            <div class="target-persona-container">
+              <h2 class="section-heading">Target Persona Analysis</h2>
+
+              <p class="section-subtext">
+                Based on your idea, we've identified the following target
+                personas. These represent the most likely customer segments for
+                your solution.
+              </p>
+
+              <div class="card-grid">
+                <div *ngFor="let persona of personas" class="card card-highlight">
+                  <div class="persona-header">
+                    <div class="icon-circle">
+                      <span class="icon">👤</span>
+                    </div>
+                    <div>
+                      <h3 class="persona-name">{{ persona.name }}</h3>
+                      <p class="persona-details">
+                        {{ persona.age }} | {{ persona.role }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="persona-section">
+                    <h4 class="section-label red">❗ Pain Points</h4>
+                    <ul class="list">
+                      <li *ngFor="let point of persona.painPoints">
+                        • {{ point }}
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="persona-section">
+                    <h4 class="section-label green">✅ Goals</h4>
+                    <ul class="list">
+                      <li *ngFor="let goal of persona.goals">• {{ goal }}</li>
+                    </ul>
+                  </div>
+
+                  <div class="persona-section">
+                    <h4 class="section-label blue">Willingness to Pay</h4>
+                    <p class="willingness-text">{{ persona.willingness }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card-subsection">
+                <h3 class="card-title">Persona Insights</h3>
+                <p class="summary-text" *ngIf="personas.length > 0">
+                  <strong>Primary Target:</strong>
+                  {{ personas[0].name }} represents your ideal early adopter.
+                  Focus on addressing their specific pain points.
+                </p>
+                <p class="summary-text">
+                  <strong>Value Proposition:</strong> Emphasize how your solution helps them solve their issues.
+                </p>
+                <p class="summary-text">
+                  <strong>Pricing Strategy:</strong> Consider a pricing model aligned with the willingness to pay of your primary persona.
+                </p>
+              </div>
+
+              <!-- Personas Navigation -->
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-secondary" (click)="prev()">
+                  Back to Market Analysis
+                </button>
+                <button class="btn btn-danger" (click)="next()">
+                  Continue to MVP Features
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: MVP Features -->
+          <div
+            class="tab-pane fade show"
+            [ngClass]="{ active: currentTab === 3 }"
+          >
+            <div class="mvp-features-container">
+              <h2 class="section-heading">MVP Features Analysis</h2>
+
+              <!-- Core Features -->
+              <div class="card card-highlight mb-4">
+                <h3 class="card-title">
+                  <span class="feature-icon">⭐</span> Core Features
+                </h3>
+                <p class="feature-description">Essential features for your MVP launch:</p>
+                <ul class="feature-list">
+                  <li *ngFor="let feature of mvpFeatures.core">
+                    {{ feature }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Secondary Features -->
+              <div class="card mb-4">
+                <h3 class="card-title">
+                  <span class="feature-icon">🔄</span> Secondary Features
+                </h3>
+                <p class="feature-description">Nice-to-have features to enhance the product:</p>
+                <ul class="feature-list">
+                  <li *ngFor="let feature of mvpFeatures.secondary">
+                    {{ feature }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Future Features -->
+              <div class="card mb-4">
+                <h3 class="card-title">
+                  <span class="feature-icon">🎯</span> Future Features
+                </h3>
+                <p class="feature-description">Potential features for future iterations:</p>
+                <ul class="feature-list">
+                  <li *ngFor="let feature of mvpFeatures.future">
+                    {{ feature }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Technical Requirements -->
+              <div class="card mb-4">
+                <h3 class="card-title">
+                  <span class="feature-icon">⚙️</span> Technical Requirements
+                </h3>
+
+                <div class="technical-section">
+                  <h4>Recommended Tech Stack</h4>
+                  <ul class="tech-list">
+                    <li *ngFor="let tech of mvpFeatures.technical.stack">
+                      {{ tech }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="technical-section">
+                  <h4>Infrastructure Components</h4>
+                  <ul class="tech-list">
+                    <li *ngFor="let infra of mvpFeatures.technical.infrastructure">
+                      {{ infra }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="technical-section">
+                  <h4>Third-Party Services</h4>
+                  <ul class="tech-list">
+                    <li *ngFor="let service of mvpFeatures.technical.thirdPartyServices">
+                      {{ service }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Development Timeline -->
+              <div class="card">
+                <h3 class="card-title">
+                  <span class="feature-icon">📅</span> Development Timeline
+                </h3>
+                <p class="timeline-text">{{ mvpFeatures.timeline }}</p>
+              </div>
+
+              <!-- MVP Features Navigation -->
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-secondary" (click)="prev()">
+                  Back to Personas
+                </button>
+                <button class="btn btn-danger" (click)="next()">
+                  Continue to Launch Plan
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: Launch Plan -->
+          <div
+            class="tab-pane fade show"
+            [ngClass]="{ active: currentTab === 4 }"
+          >
+            <div class="launch-plan-container">
+              <h2 class="section-heading">Launch Strategy</h2>
+
+              <!-- Marketing Strategy -->
+              <div class="card card-highlight mb-4">
+                <h3 class="card-title">
+                  <span class="strategy-icon">📢</span> Marketing Strategy
+                </h3>
+
+                <div class="strategy-section">
+                  <h4>Marketing Channels</h4>
+                  <ul class="strategy-list">
+                    <li *ngFor="let channel of launchPlan.marketingStrategy.channels">
+                      {{ channel }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="strategy-section">
+                  <h4>Marketing Tactics</h4>
+                  <ul class="strategy-list">
+                    <li *ngFor="let tactic of launchPlan.marketingStrategy.tactics">
+                      {{ tactic }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="strategy-section">
+                  <h4>Content Strategy</h4>
+                  <p class="strategy-text">{{ launchPlan.marketingStrategy.contentStrategy }}</p>
+                </div>
+
+                <div class="strategy-section">
+                  <h4>Partnership Opportunities</h4>
+                  <ul class="strategy-list">
+                    <li *ngFor="let partnership of launchPlan.marketingStrategy.partnerships">
+                      {{ partnership }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Monetization Strategy -->
+              <div class="card mb-4">
+                <h3 class="card-title">
+                  <span class="strategy-icon">💰</span> Monetization Strategy
+                </h3>
+
+                <div class="monetization-section">
+                  <h4>Business Model</h4>
+                  <p class="model-text">{{ launchPlan.monetization.model }}</p>
+                </div>
+
+                <div class="monetization-section">
+                  <h4>Pricing Strategy</h4>
+                  <p class="pricing-text">{{ launchPlan.monetization.pricing.strategy }}</p>
+
+                  <h5>Pricing Tiers</h5>
+                  <ul class="pricing-list">
+                    <li *ngFor="let tier of launchPlan.monetization.pricing.tiers">
+                      {{ tier }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="monetization-section">
+                  <h4>Additional Revenue Streams</h4>
+                  <ul class="revenue-list">
+                    <li *ngFor="let stream of launchPlan.monetization.revenueStreams">
+                      {{ stream }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Launch Timeline -->
+              <div class="card">
+                <h3 class="card-title">
+                  <span class="strategy-icon">🚀</span> Launch Timeline
+                </h3>
+
+                <div class="timeline-section">
+                  <h4>Pre-Launch Activities</h4>
+                  <ul class="timeline-list">
+                    <li *ngFor="let activity of launchPlan.timeline.preLaunch">
+                      {{ activity }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="timeline-section">
+                  <h4>Launch Day Activities</h4>
+                  <ul class="timeline-list">
+                    <li *ngFor="let activity of launchPlan.timeline.launch">
+                      {{ activity }}
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="timeline-section">
+                  <h4>Post-Launch Activities</h4>
+                  <ul class="timeline-list">
+                    <li *ngFor="let activity of launchPlan.timeline.postLaunch">
+                      {{ activity }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Launch Plan Navigation -->
+              <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-secondary" (click)="prev()">
+                  Back to MVP Features
+                </button>
+                <div class="d-flex align-items-center gap-3">
+                  <div *ngIf="saveError" class="text-danger">
+                    {{ saveError }}
+                  </div>
+                  <button
+                    class="btn btn-danger"
+                    (click)="navigateToHome()"
+                    [disabled]="saving"
+                  >
+                    <span *ngIf="saving" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    {{ saving ? 'Saving...' : 'Finish' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading State - Separate from blurred content -->
+        <div class="loading-state" *ngIf="loading">
+          <div class="shimmer-text-wrapper">
+            <div class="shimmer-text">
+              <span class="shimmer-char" *ngFor="let char of 'Your Co-Founder Is Thinking...'.split(''); let i = index" [style.animation-delay]="i * 0.1 + 's'">{{char}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

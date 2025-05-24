@@ -1,0 +1,268 @@
+<div class="container py-5">
+  <!-- Back Button -->
+  <div class="mb-4">
+    <button class="btn btn-outline-light" (click)="goBack()">
+      <i class="ti ti-arrow-left me-2"></i>Back to My Ideas
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div class="row" *ngIf="loading">
+    <div class="col-12">
+      <div class="text-center text-white">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div class="row" *ngIf="error">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Idea Details -->
+  <div class="row" *ngIf="!loading && !error && idea">
+    <div class="col-12">
+      <div class="idea-details-card">
+        <!-- Header -->
+        <div class="idea-header">
+          <h1 class="idea-title">{{ idea.title }}</h1>
+          <div class="idea-meta">
+            <span class="idea-date">Created: {{ formatDate(idea.created_at) }}</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="idea-section">
+          <h2 class="section-title">Description</h2>
+          <p class="section-content">{{ idea.description }}</p>
+        </div>
+
+        <!-- Market Analysis -->
+        <div class="idea-section" *ngIf="idea.result_json?.marketAnalysis">
+          <h2 class="section-title">Market Analysis</h2>
+          <div class="market-analysis-grid">
+            <!-- Interest Score -->
+            <div class="analysis-card">
+              <h3 class="card-title">Interest Score</h3>
+              <div class="score-container">
+                <div class="score-bar">
+                  <div class="score-fill" [style.width.%]="idea.result_json.marketAnalysis.interestScore"></div>
+                </div>
+                <div class="score-value">{{ idea.result_json.marketAnalysis.interestScore }}/100</div>
+              </div>
+              <div class="trend">
+                <span>{{ idea.result_json.marketAnalysis.trend === 'growing' ? '🔼' : '🔽' }}</span>
+                <span>{{ idea.result_json.marketAnalysis.trend }}</span>
+              </div>
+            </div>
+
+            <!-- Market Size -->
+            <div class="analysis-card">
+              <h3 class="card-title">Market Size</h3>
+              <p class="card-content">{{ idea.result_json.marketAnalysis.marketSize }}</p>
+            </div>
+
+            <!-- Competitive Landscape -->
+            <div class="analysis-card">
+              <h3 class="card-title">Competitive Landscape</h3>
+              <p class="card-content">{{ idea.result_json.marketAnalysis.competitiveLandscape }}</p>
+            </div>
+
+            <!-- Market Gaps -->
+            <div class="analysis-card">
+              <h3 class="card-title">Market Gaps</h3>
+              <p class="card-content">{{ idea.result_json.marketAnalysis.marketGaps }}</p>
+            </div>
+
+            <!-- Growth Potential -->
+            <div class="analysis-card">
+              <h3 class="card-title">Growth Potential</h3>
+              <p class="card-content">{{ idea.result_json.marketAnalysis.growthPotential }}</p>
+            </div>
+
+            <!-- Key Risks -->
+            <div class="analysis-card">
+              <h3 class="card-title">Key Risks</h3>
+              <ul class="risk-list">
+                <li *ngFor="let risk of idea.result_json.marketAnalysis.keyRisks">{{ risk }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Target Personas -->
+        <div class="idea-section" *ngIf="idea.result_json?.personas?.length">
+          <h2 class="section-title">Target Personas</h2>
+          <div class="personas-grid">
+            <div class="persona-card" *ngFor="let persona of idea.result_json.personas">
+              <div class="persona-header">
+                <div class="persona-icon">👤</div>
+                <div>
+                  <h3 class="persona-name">{{ persona.name }}</h3>
+                  <p class="persona-role">{{ persona.age }} | {{ persona.role }}</p>
+                </div>
+              </div>
+              <div class="persona-content">
+                <div class="persona-section">
+                  <h4>Pain Points</h4>
+                  <ul>
+                    <li *ngFor="let point of persona.painPoints">{{ point }}</li>
+                  </ul>
+                </div>
+                <div class="persona-section">
+                  <h4>Goals</h4>
+                  <ul>
+                    <li *ngFor="let goal of persona.goals">{{ goal }}</li>
+                  </ul>
+                </div>
+                <div class="persona-section">
+                  <h4>Willingness to Pay</h4>
+                  <p>{{ persona.willingness }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MVP Features -->
+        <div class="idea-section" *ngIf="idea.result_json?.mvpFeatures">
+          <h2 class="section-title">MVP Features</h2>
+          <div class="features-grid">
+            <!-- Core Features -->
+            <div class="feature-card">
+              <h3 class="card-title">⭐ Core Features</h3>
+              <ul class="feature-list">
+                <li *ngFor="let feature of idea.result_json.mvpFeatures.core">{{ feature }}</li>
+              </ul>
+            </div>
+
+            <!-- Secondary Features -->
+            <div class="feature-card">
+              <h3 class="card-title">🔄 Secondary Features</h3>
+              <ul class="feature-list">
+                <li *ngFor="let feature of idea.result_json.mvpFeatures.secondary">{{ feature }}</li>
+              </ul>
+            </div>
+
+            <!-- Future Features -->
+            <div class="feature-card">
+              <h3 class="card-title">🎯 Future Features</h3>
+              <ul class="feature-list">
+                <li *ngFor="let feature of idea.result_json.mvpFeatures.future">{{ feature }}</li>
+              </ul>
+            </div>
+
+            <!-- Technical Requirements -->
+            <div class="feature-card">
+              <h3 class="card-title">⚙️ Technical Requirements</h3>
+              <div class="tech-section">
+                <h4>Tech Stack</h4>
+                <ul>
+                  <li *ngFor="let tech of idea.result_json.mvpFeatures.technical.stack">{{ tech }}</li>
+                </ul>
+              </div>
+              <div class="tech-section">
+                <h4>Infrastructure</h4>
+                <ul>
+                  <li *ngFor="let infra of idea.result_json.mvpFeatures.technical.infrastructure">{{ infra }}</li>
+                </ul>
+              </div>
+              <div class="tech-section">
+                <h4>Third-Party Services</h4>
+                <ul>
+                  <li *ngFor="let service of idea.result_json.mvpFeatures.technical.thirdPartyServices">{{ service }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Launch Plan -->
+        <div class="idea-section" *ngIf="idea.result_json?.launchPlan">
+          <h2 class="section-title">Launch Plan</h2>
+          <div class="launch-plan-grid">
+            <!-- Marketing Strategy -->
+            <div class="launch-card">
+              <h3 class="card-title">📢 Marketing Strategy</h3>
+              <div class="strategy-section">
+                <h4>Channels</h4>
+                <ul>
+                  <li *ngFor="let channel of idea.result_json.launchPlan.marketingStrategy.channels">{{ channel }}</li>
+                </ul>
+              </div>
+              <div class="strategy-section">
+                <h4>Tactics</h4>
+                <ul>
+                  <li *ngFor="let tactic of idea.result_json.launchPlan.marketingStrategy.tactics">{{ tactic }}</li>
+                </ul>
+              </div>
+              <div class="strategy-section">
+                <h4>Content Strategy</h4>
+                <p>{{ idea.result_json.launchPlan.marketingStrategy.contentStrategy }}</p>
+              </div>
+              <div class="strategy-section">
+                <h4>Partnerships</h4>
+                <ul>
+                  <li *ngFor="let partnership of idea.result_json.launchPlan.marketingStrategy.partnerships">{{ partnership }}</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Monetization -->
+            <div class="launch-card">
+              <h3 class="card-title">💰 Monetization</h3>
+              <div class="monetization-section">
+                <h4>Business Model</h4>
+                <p>{{ idea.result_json.launchPlan.monetization.model }}</p>
+              </div>
+              <div class="monetization-section">
+                <h4>Pricing Strategy</h4>
+                <p>{{ idea.result_json.launchPlan.monetization.pricing.strategy }}</p>
+                <h4>Pricing Tiers</h4>
+                <ul>
+                  <li *ngFor="let tier of idea.result_json.launchPlan.monetization.pricing.tiers">{{ tier }}</li>
+                </ul>
+              </div>
+              <div class="monetization-section">
+                <h4>Revenue Streams</h4>
+                <ul>
+                  <li *ngFor="let stream of idea.result_json.launchPlan.monetization.revenueStreams">{{ stream }}</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="launch-card">
+              <h3 class="card-title">🚀 Timeline</h3>
+              <div class="timeline-section">
+                <h4>Pre-Launch</h4>
+                <ul>
+                  <li *ngFor="let activity of idea.result_json.launchPlan.timeline.preLaunch">{{ activity }}</li>
+                </ul>
+              </div>
+              <div class="timeline-section">
+                <h4>Launch</h4>
+                <ul>
+                  <li *ngFor="let activity of idea.result_json.launchPlan.timeline.launch">{{ activity }}</li>
+                </ul>
+              </div>
+              <div class="timeline-section">
+                <h4>Post-Launch</h4>
+                <ul>
+                  <li *ngFor="let activity of idea.result_json.launchPlan.timeline.postLaunch">{{ activity }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

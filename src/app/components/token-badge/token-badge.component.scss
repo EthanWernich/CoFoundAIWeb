@@ -1,0 +1,23 @@
+.token-badge {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #fff;
+  color: #212121;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 1000;
+}
+.token-badge .icon svg {
+  display: block;
+  stroke: #ff5252;
+}
+.token-badge .count {
+  color: #212121;
+}

@@ -23,8 +23,11 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
-            "assets": ["src/assets", "src/favicon.ico"],
-
+            "assets": [
+              "src/assets",
+              "src/favicon.ico",
+              "src/_redirects"
+            ],
             "styles": ["src/style.css"],
             "scripts": [
               "src/assets/js/bootstrap.min.js"

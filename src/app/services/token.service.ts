@@ -3,7 +3,6 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { from, Observable, BehaviorSubject } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { createClient } from '@supabase/supabase-js';
-import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
@@ -11,7 +10,7 @@ export class TokenService {
   private tokenSubject = new BehaviorSubject<number>(0);
 
   constructor() {
-    this.supabase = createClient(environment.supabaseUrl, environment.supabaseAnonKey);
+    this.supabase = createClient('https://vjkardnbjlcgkpmrpudh.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqa2FyZG5iamxjZ2twbXJwdWRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY4MTI4NDYsImV4cCI6MjA2MjM4ODg0Nn0.eyhk9MQ0WpEWZEccWlmvcYuAcKsjGqMASFIRHQPYgJ8');
     // Initialize token count
     this.refreshTokenCount();
   }

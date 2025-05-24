@@ -7,7 +7,6 @@
 /dist
 
 # environment files
-/src/environments/environment.ts
 .env
 .env.local
 .env.development.local

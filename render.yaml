@@ -4,7 +4,7 @@ services:
     env: static
     buildCommand: |
       npm install
-      npm run build -- --configuration production
+      npm run build -- --configuration production --base-href=/
       cp _redirects dist/co-found-ai/browser/
     staticPublishPath: dist/co-found-ai/browser
     envVars:

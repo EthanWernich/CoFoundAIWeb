@@ -20,4 +20,3 @@ services:
       - type: rewrite
         source: /*
         destination: /browser/index.html
-        force: true

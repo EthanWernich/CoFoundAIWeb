@@ -29,5 +29,10 @@ export const routes: Routes = [
     path: 'idea/:id',
     loadComponent: () => import('./pages/idea-details/idea-details.component').then(m => m.IdeaDetailsComponent),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'payment-callback',
+    loadComponent: () => import('./pages/payment-callback/payment-callback.component').then(m => m.PaymentCallbackComponent),
+    canActivate: [AuthGuard]
   }
 ];

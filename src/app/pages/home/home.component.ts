@@ -46,4 +46,10 @@ export class HomeComponent implements OnInit {
       console.error('Error logging out:', error);
     }
   }
+
+  // Add this method to handle payment link clicks
+  handlePaymentClick(productId: string) {
+    // Store the product ID in session storage before redirecting
+    sessionStorage.setItem('paymentProductId', productId);
+  }
 }

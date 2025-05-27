@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,11 +10,30 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   showNotification = true;
-  constructor(public auth: AuthService) {}
+
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    // Check for payment reference in URL
+    this.route.queryParams.subscribe(params => {
+      const reference = params['reference'];
+      if (reference) {
+        // Redirect to payment callback with the reference
+        this.router.navigate(['/payment-callback'], {
+          queryParams: {
+            reference: reference,
+            status: 'success'  // Since Paystack redirected here, we assume success
+          }
+        });
+      }
+    });
+
     setTimeout(() => {
       this.showNotification = false;
     }, 10000);

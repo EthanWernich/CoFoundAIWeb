@@ -3,16 +3,26 @@ import { SupabaseClient } from '@supabase/supabase-js';
 import { from, Observable, BehaviorSubject } from 'rxjs';
 import { switchMap, map, tap } from 'rxjs/operators';
 import { createClient } from '@supabase/supabase-js';
+import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
   private supabase: SupabaseClient;
   private tokenSubject = new BehaviorSubject<number>(0);
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.supabase = createClient('https://vjkardnbjlcgkpmrpudh.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqa2FyZG5iamxjZ2twbXJwdWRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY4MTI4NDYsImV4cCI6MjA2MjM4ODg0Nn0.eyhk9MQ0WpEWZEccWlmvcYuAcKsjGqMASFIRHQPYgJ8');
-    // Initialize token count
-    this.refreshTokenCount();
+
+    // Listen for auth state changes
+    this.authService.getCurrentUser().subscribe(user => {
+      if (user) {
+        // User is logged in, refresh token count
+        this.refreshTokenCount();
+      } else {
+        // User is logged out, reset token count
+        this.tokenSubject.next(0);
+      }
+    });
   }
 
   private refreshTokenCount() {

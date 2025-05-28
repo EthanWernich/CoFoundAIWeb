@@ -454,17 +454,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  padding: 3rem 1rem;
+  font-size: 1.5rem;
+  padding: 2rem 0.5rem;
   background-color: #212121;
   overflow: hidden;
 
   @media (min-width: 640px) {
+    font-size: 2rem;
+    padding: 3rem 1rem;
+  }
+
+  @media (min-width: 768px) {
     font-size: 2.5rem;
     padding: 4rem 2rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     font-size: 3rem;
     padding: 5rem 3rem;
   }
@@ -477,6 +482,13 @@
   margin: 0;
   color: #e5e6e9;
   font-weight: 300;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+
+  @media (max-width: 639px) {
+    gap: 0.25rem;
+  }
 }
 
 .rotating-text-prefix {
@@ -489,16 +501,27 @@
 .rotating-text-content {
   display: inline-flex;
   position: relative;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.75rem;
   background-color: #ff5252;
   border-radius: 0.5rem;
   overflow: hidden;
-  min-width: 150px;
+  min-width: 120px;
   justify-content: center;
-  height: 3rem;
+  height: 2.5rem;
 
   @media (min-width: 640px) {
     padding: 0.5rem 1rem;
+    min-width: 150px;
+    height: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    min-width: 180px;
+    height: 3.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    min-width: 200px;
     height: 4rem;
   }
 }
@@ -512,6 +535,8 @@
   white-space: pre;
   transform: translateY(100%);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  width: 100%;
 
   &.active {
     position: relative;

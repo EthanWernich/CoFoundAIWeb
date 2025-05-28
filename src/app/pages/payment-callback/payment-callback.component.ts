@@ -11,14 +11,14 @@ import { CommonModule } from '@angular/common';
     <div class="container py-5">
       <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-          <div *ngIf="loading" class="alert alert-info">
-            Processing your payment...
+          <div *ngIf="loading" class="alert" style="background: #212121; color: #e5e6e9; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <span style="color: #ff5252;">Processing your payment...</span>
           </div>
-          <div *ngIf="error" class="alert alert-danger">
+          <div *ngIf="error" class="alert" style="background: #212121; color: #ff5252; border: 1px solid rgba(255, 255, 255, 0.1);">
             {{ error }}
           </div>
-          <div *ngIf="success" class="alert alert-success">
-            Payment successful! {{ tokensAdded }} tokens have been added to your account.
+          <div *ngIf="success" class="alert" style="background: #212121; color: #e5e6e9; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <span style="color: #ff5252;">Payment successful!</span> {{ tokensAdded }} tokens have been added to your account.
           </div>
         </div>
       </div>

@@ -11,13 +11,13 @@
   <div class="container">
     <nav class="navbar navbar-expand-xl py-0">
       <div class="logo">
-        <div class="navbar-brand py-0 me-0" href="#">
+        <a [routerLink]="'/'" class="navbar-brand py-0 me-0" style="cursor: pointer;">
           <img
             src="assets/images/cofound-ai-logo.png"
             alt=""
             style="max-height: 60px; height: auto; width: auto"
           />
-        </div>
+        </a>
       </div>
 
       <a
@@ -250,7 +250,10 @@
                 </span>
               </button>
             </div>
-            <div *ngIf="tokens === 0" class="text-danger mt-2">You need tokens to validate an idea.</div>
+            <div *ngIf="tokens === 0" class="text-danger mt-2">
+              You need tokens to validate an idea.
+              <a (click)="navigateToPricing()" class="get-tokens-link" style="color: #ff5252; text-decoration: none; margin-left: 5px; cursor: pointer;">Get Tokens →</a>
+            </div>
           </div>
 
           <!-- Tab 2: Market Analysis -->

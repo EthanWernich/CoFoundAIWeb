@@ -309,4 +309,16 @@ export class ValidateIdeaComponent implements OnInit, OnDestroy {
     });
   }
 
+  navigateToPricing() {
+    this.router.navigate(['/']).then(() => {
+      // Wait for the home page to load
+      setTimeout(() => {
+        const pricingSection = document.getElementById('pricing');
+        if (pricingSection) {
+          pricingSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    });
+  }
+
 }
